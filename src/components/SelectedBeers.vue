@@ -19,7 +19,7 @@ export default {
   props: ['beers'],
   methods: {
     handleSelect(){
-      eventBus.$emit('beer-selected', this.beer)
+      eventBus.$emit('beer-selected', this.selectedBeer) //whatever is asked for in v-model is needed in event bus 
     }
   }
 }
