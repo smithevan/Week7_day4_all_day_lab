@@ -2,14 +2,13 @@
   <div>
     <h1>Select A Beer</h1>
     <beers-list :beers="beers"></beers-list>  <!--uses the component beers-list to make html and binds beers to beers -->
-    <beer-selected :beer="selectedBeer"></beer-selected>
+    <beer-detail :selectedBeer="selectedBeer"></beer-detail>
   </div>
 </template>
 
 <script>
 import BeersList from './components/SelectedBeers.vue' //**imports the BeersList from SelectedBeers
-
-import BeerDetails from './components/SelectedBeerDetails.vue'
+import BeerDetail from './components/SelectedBeerDetails.vue'
 import { eventBus } from './main.js'
 
 export default {
@@ -34,7 +33,8 @@ export default {
 },
   //takes BeersList from the import and assigns it to beers-list to be used as HTML tag above
   components: {
-    "beers-list": BeersList
+    "beers-list": BeersList,
+    "beer-detail": BeerDetail
   }
 }
 </script>
