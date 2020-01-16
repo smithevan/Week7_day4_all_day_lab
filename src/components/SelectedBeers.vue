@@ -1,20 +1,27 @@
 <template lang="html">
   <div>
-    <form v-on:submit.prevent>
-      <select v-on: change="handleSelect" v-model="selectedBeer">
+    <!-- <form v-on:submit.prevent> -->
+      <select v-on:change="handleSelect" v-model="selectedBeer">
         <option v-for="(beer, index) in beers" :beer="beer" key="index">{{beer.name}}</option>
+        <!--looping over beer in beers with index, binding individual beer(banana/iterator) onto "beer",
+        which gets used in the eventbus, and index is used as the hash key-->
       </select>
-    </form>
+    <!-- </form> -->
   </div>
 
 </template>
 
 <script>
-
+import { eventBus } from '../main.js'
 
 export default {
   name: 'beers-list',
-  props: ['beers']
+  props: ['beers'],
+  methods: {
+    handleSelect(){
+      eventBus.$emit('beer-selected', this.beer)
+    }
+  }
 }
 </script>
 

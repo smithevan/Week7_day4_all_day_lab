@@ -1,12 +1,16 @@
 <template>
   <div>
-    <beers-list :beers="beers"></beers-list> 
+    <h1>Select A Beer</h1>
+    <beers-list :beers="beers"></beers-list>  <!--uses the component beers-list to make html and binds beers to beers -->
+    <beer-selected :beer="selectedBeer"></beer-selected>
   </div>
 </template>
 
 <script>
 import BeersList from './components/SelectedBeers.vue' //**imports the BeersList from SelectedBeers
 
+import BeerDetails from './components/SelectedBeerDetails.vue'
+import { eventBus } from './main.js'
 
 export default {
   name: 'app',
@@ -23,8 +27,12 @@ export default {
     fetch('https://api.punkapi.com/v2/beers')
       .then(res => res.json())
       .then(beers => this.beers = beers)
-  },
-  //not sure exactly
+    //
+    eventBus.$on('beer-selected', (beer) => {
+      this.selectedBeer = beer
+  })
+},
+  //takes BeersList from the import and assigns it to beers-list to be used as HTML tag above
   components: {
     "beers-list": BeersList
   }
