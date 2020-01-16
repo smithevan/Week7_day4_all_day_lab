@@ -1,28 +1,36 @@
 <template>
   <div>
-    <h1>Test Text</h1>
+    <beers-list :beers="beers"></beers-list> 
   </div>
 </template>
 
 <script>
-// import SelectedBeers from './components/SelectedBeers.vue'
+import BeersList from './components/SelectedBeers.vue' //**imports the BeersList from SelectedBeers
+
 
 export default {
   name: 'app',
   data() {
     return {
-      beers: [{}],
-      selectedBeer: null,
-      favouriteBeer: null
+      beers: [{}], //beers array of objects
+      selectedBeer: null, //object of the beer when it's selected
+      favouriteBeer: null //object of the beer when it's been selected as favourite
     }
   },
+
+  //Pulls in API data from API to the beers array of objects
   mounted(){
     fetch('https://api.punkapi.com/v2/beers')
       .then(res => res.json())
       .then(beers => this.beers = beers)
+  },
+  //not sure exactly
+  components: {
+    "beers-list": BeersList
   }
 }
 </script>
+
 
 <style>
 #app {
