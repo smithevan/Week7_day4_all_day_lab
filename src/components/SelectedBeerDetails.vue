@@ -2,8 +2,7 @@
   <div v-if="selectedBeer" id="beerDetail">
     <h2>{{selectedBeer.name}}</h2>
     <p><span>Description</span>: {{selectedBeer.description}}</p>
-    <p></p>
-    <p></p>
+    <button type="button" name="favourite-beer" value="Favourite"></button>
   </div>
 </template>
 

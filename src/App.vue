@@ -17,7 +17,7 @@ export default {
     return {
       beers: [{}], //beers array of objects
       selectedBeer: null, //object of the beer when it's selected
-      favouriteBeer: null //object of the beer when it's been selected as favourite
+      favouriteBeer: [] //object of the beer when it's been selected as favourite
     }
   },
 
